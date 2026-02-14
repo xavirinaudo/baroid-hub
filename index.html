@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Baroid Hub">
@@ -479,27 +480,50 @@
 
             // Treatment Visibility State (No reordering here as per user request)
             const [treatmentConfig, setTreatmentConfig] = useState(() => {
-                const saved = localStorage.getItem('baroid_treatment_config');
-                return saved ? JSON.parse(saved) : [
-                    { id: 'lime', label: 'Cal (Limpiar Carb.)', visible: true },
-                    { id: 'sodaAsh', label: 'Soda Ash (Rem. Ca++)', visible: true },
-                    { id: 'sodiumBicarb', label: 'Bicarb. (Rem. Ca++)', visible: true }
-                ];
+                try {
+                    const saved = localStorage.getItem('baroid_treatment_config');
+                    return saved ? JSON.parse(saved) : [
+                        { id: 'lime', label: 'Cal (Limpiar Carb.)', visible: true },
+                        { id: 'sodaAsh', label: 'Soda Ash (Rem. Ca++)', visible: true },
+                        { id: 'sodiumBicarb', label: 'Bicarb. (Rem. Ca++)', visible: true }
+                    ];
+                } catch (e) {
+                    console.error("Error loading treatment config:", e);
+                    return [
+                        { id: 'lime', label: 'Cal (Limpiar Carb.)', visible: true },
+                        { id: 'sodaAsh', label: 'Soda Ash (Rem. Ca++)', visible: true },
+                        { id: 'sodiumBicarb', label: 'Bicarb. (Rem. Ca++)', visible: true }
+                    ];
+                }
             });
 
             // Tabs Configuration State (Order and Visibility)
             const [tabsConfig, setTabsConfig] = useState(() => {
-                const saved = localStorage.getItem('baroid_calc_tabs_v3');
-                return saved ? JSON.parse(saved) : [
-                    { id: 'conv', label: 'Conversor de Unidades', icon: 'repeat', visible: true },
-                    { id: 'barite', label: 'Ajuste de Densidad', icon: 'arrow-up-circle', visible: true },
-                    { id: 'mixing', label: 'Mezcla (Balance Masa)', icon: 'blend', visible: true },
-                    { id: 'eng', label: 'Hidrostática & Capacidad', icon: 'droplet', visible: true },
-                    { id: 'owr', label: 'Relación Aceite/Agua', icon: 'droplet-off', visible: true },
-                    { id: 'slug', label: 'Píldoras (Slugs)', icon: 'flask-conical', visible: true },
-                    { id: 'fit', label: 'Integridad (FIT)', icon: 'shield-check', visible: true },
-                    { id: 'pfmf', label: 'Pf/Mf & Tratamiento', icon: 'beaker', visible: true }
-                ];
+                try {
+                    const saved = localStorage.getItem('baroid_calc_tabs_v3');
+                    return saved ? JSON.parse(saved) : [
+                        { id: 'conv', label: 'Conversor de Unidades', icon: 'repeat', visible: true },
+                        { id: 'barite', label: 'Ajuste de Densidad', icon: 'arrow-up-circle', visible: true },
+                        { id: 'mixing', label: 'Mezcla (Balance Masa)', icon: 'blend', visible: true },
+                        { id: 'eng', label: 'Hidrostática & Capacidad', icon: 'droplet', visible: true },
+                        { id: 'owr', label: 'Relación Aceite/Agua', icon: 'droplet-off', visible: true },
+                        { id: 'slug', label: 'Píldoras (Slugs)', icon: 'flask-conical', visible: true },
+                        { id: 'fit', label: 'Integridad (FIT)', icon: 'shield-check', visible: true },
+                        { id: 'pfmf', label: 'Pf/Mf & Tratamiento', icon: 'beaker', visible: true }
+                    ];
+                } catch (e) {
+                    console.error("Error loading tabs config:", e);
+                    return [
+                        { id: 'conv', label: 'Conversor de Unidades', icon: 'repeat', visible: true },
+                        { id: 'barite', label: 'Ajuste de Densidad', icon: 'arrow-up-circle', visible: true },
+                        { id: 'mixing', label: 'Mezcla (Balance Masa)', icon: 'blend', visible: true },
+                        { id: 'eng', label: 'Hidrostática & Capacidad', icon: 'droplet', visible: true },
+                        { id: 'owr', label: 'Relación Aceite/Agua', icon: 'droplet-off', visible: true },
+                        { id: 'slug', label: 'Píldoras (Slugs)', icon: 'flask-conical', visible: true },
+                        { id: 'fit', label: 'Integridad (FIT)', icon: 'shield-check', visible: true },
+                        { id: 'pfmf', label: 'Pf/Mf & Tratamiento', icon: 'beaker', visible: true }
+                    ];
+                }
             });
 
             useEffect(() => {
@@ -1491,13 +1515,23 @@
             }));
 
             const [fluidSystems, setFluidSystems] = useState(() => {
-                const saved = localStorage.getItem('baroid_fluid_systems_v4');
-                return saved ? JSON.parse(saved) : INITIAL_FLUIDS;
+                try {
+                    const saved = localStorage.getItem('baroid_fluid_systems_v4');
+                    return saved ? JSON.parse(saved) : INITIAL_FLUIDS;
+                } catch (e) {
+                    console.error("Error loading fluid systems:", e);
+                    return INITIAL_FLUIDS;
+                }
             });
 
             const [pits, setPits] = useState(() => {
-                const saved = localStorage.getItem('baroid_piletas_v8');
-                return saved ? JSON.parse(saved) : INITIAL_PITS;
+                try {
+                    const saved = localStorage.getItem('baroid_piletas_v8');
+                    return saved ? JSON.parse(saved) : INITIAL_PITS;
+                } catch (e) {
+                    console.error("Error loading pits:", e);
+                    return INITIAL_PITS;
+                }
             });
 
             // The reset functionality is now handled globally at the App level
@@ -1746,11 +1780,27 @@
                 }
             };
 
+            const getEventPos = (e) => {
+                if (e.touches && e.touches.length > 0) {
+                    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                }
+                return { x: e.clientX, y: e.clientY };
+            };
+
             const handleMouseDown = (e, id = null) => {
+                // Prevent scrolling on touch devices when dragging
+                if (e.type === 'touchstart') {
+                    // We don't prevent default here to allow clicking inputs, 
+                    // but we might need to if dragging starts
+                }
+
                 if (e.target.closest('input') || e.target.closest('button')) return;
 
+                const { x: clientX, y: clientY } = getEventPos(e);
+
+
                 if (id) {
-                    e.stopPropagation();
+                    if (e.stopPropagation) e.stopPropagation();
                     let nextSelection = selectedIds;
                     const isNowSelected = selectedIds.includes(id);
 
@@ -1774,26 +1824,33 @@
                     const pit = pits.find(p => p.id === id);
                     if (e.target.closest('.resize-handle')) {
                         setResizingPitId(id);
-                        setResizeStart({ w: pit.w, h: pit.h, x: e.clientX, y: e.clientY });
+                        setResizeStart({ w: pit.w, h: pit.h, x: clientX, y: clientY });
                     } else {
                         setDraggingPitId(id);
-                        setDragOffset({ x: e.clientX - pit.x, y: e.clientY - pit.y });
+                        setDragOffset({ x: clientX - pit.x, y: clientY - pit.y });
                     }
                 } else {
                     if (!e.shiftKey) setSelectedIds([]);
-                    setSelectionBox({ x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY, w: 0, h: 0 });
+                    setSelectionBox({ x: clientX, y: clientY, startX: clientX, startY: clientY, w: 0, h: 0 });
                 }
             };
 
             const handleMouseMove = (e) => {
                 const canvasEl = document.getElementById('piletas-canvas');
                 if (!canvasEl) return;
+
+                // Prevent scrolling if dragging
+                if ((draggingPitId || resizingPitId || selectionBox) && e.cancelable && e.type === 'touchmove') {
+                    e.preventDefault();
+                }
+
+                const { x: clientX, y: clientY } = getEventPos(e);
                 const canvasRect = canvasEl.getBoundingClientRect();
                 const margin = 20;
 
                 if (selectionBox) {
-                    const currentX = e.clientX;
-                    const currentY = e.clientY;
+                    const currentX = clientX;
+                    const currentY = clientY;
                     const x = Math.min(currentX, selectionBox.startX);
                     const y = Math.min(currentY, selectionBox.startY);
                     const w = Math.abs(currentX - selectionBox.startX);
@@ -1815,8 +1872,8 @@
                     }).map(p => p.id);
                     setSelectedIds(pitsInBox);
                 } else if (draggingPitId && groupStartStates) {
-                    const dx = e.clientX - (groupStartStates[draggingPitId].x + dragOffset.x);
-                    const dy = e.clientY - (groupStartStates[draggingPitId].y + dragOffset.y);
+                    const dx = clientX - (groupStartStates[draggingPitId].x + dragOffset.x);
+                    const dy = clientY - (groupStartStates[draggingPitId].y + dragOffset.y);
 
                     setPits(prevPits => prevPits.map(p => {
                         if (selectedIds.includes(p.id) && groupStartStates[p.id]) {
@@ -2001,8 +2058,11 @@
                     <div
                         id="piletas-canvas"
                         onMouseDown={(e) => handleMouseDown(e)}
+                        onTouchStart={(e) => handleMouseDown(e)}
                         onMouseMove={handleMouseMove}
+                        onTouchMove={handleMouseMove}
                         onMouseUp={handleMouseUp}
+                        onTouchEnd={handleMouseUp}
                         onMouseLeave={handleMouseUp}
                         className="relative bg-zinc-50 dark:bg-slate-950/40 rounded-[4rem] border-2 border-zinc-100 dark:border-zinc-800 min-h-[1200px] shadow-inner p-10 mb-20 overflow-visible"
                         style={{ cursor: (draggingPitId || resizingPitId) ? (resizingPitId ? 'se-resize' : 'grabbing') : 'default' }}
@@ -2045,6 +2105,7 @@
                                     key={p.id}
                                     id={`pit-${p.id}`}
                                     onMouseDown={(e) => handleMouseDown(e, p.id)}
+                                    onTouchStart={(e) => handleMouseDown(e, p.id)}
                                     className={`absolute ${isSelected ? 'ring-4 ring-blue-500/30 rounded-[22px]' : ''}`}
                                     style={{
                                         left: `${p.x}px`,
