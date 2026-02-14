@@ -926,7 +926,7 @@
                                         <label className="text-[13px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 block">Volumen Inicial ({bariteUnits.vol})</label>
                                         <input type="number" value={barite.vol} onChange={e => setBarite({ ...barite, vol: e.target.value })} className="w-full input-style text-xl font-bold" />
                                     </div>
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className="text-[13px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 block">D. Actual ({bariteUnits.dens})</label>
                                             <input type="number" value={barite.d1} onChange={e => setBarite({ ...barite, d1: e.target.value })} className="w-full input-style" />
@@ -950,7 +950,7 @@
                                         <label className="text-[13px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 block">Longitud Seca Deseada ({unitMode === 'field' ? 'ft' : 'm'})</label>
                                         <input type="number" value={slug.lengthSeca} onChange={e => setSlug({ ...slug, lengthSeca: e.target.value })} className="w-full input-style text-xl font-bold" placeholder="0.00" />
                                     </div>
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className="text-[13px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 block">ID Drill Pipe (in)</label>
                                             <input type="number" value={slug.idDP} onChange={e => setSlug({ ...slug, idDP: e.target.value })} className="w-full input-style text-xl font-bold" placeholder="0.00" />
@@ -962,7 +962,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className="text-[13px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 block">Dens. Fluido ({unitMode === 'field' ? 'ppg' : 'g/L'})</label>
                                             <input type="number" value={slug.densMud} onChange={e => setSlug({ ...slug, densMud: e.target.value })} className="w-full input-style" />
@@ -986,7 +986,7 @@
 
                                         {showAdvancedSlug && (
                                             <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
-                                                <div className="grid grid-cols-2 gap-4">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                     <div>
                                                         <label className="text-[12px] font-black text-zinc-500 dark:text-zinc-400 uppercase mb-2 block">Válvulas/Motor (PSI)</label>
                                                         <input type="number" value={slug.valveResist} onChange={e => setSlug({ ...slug, valveResist: e.target.value })} className="w-full input-style" placeholder="Resorte/Fricción" title="Presión necesaria para abrir la válvula flotadora (Float Valve) o vencer motores." />
@@ -1013,7 +1013,7 @@
                                             </div>
                                         )}
                                     </div>
-                                    <div className="grid grid-cols-2 gap-4 border-t border-zinc-100 dark:border-zinc-800 pt-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-zinc-100 dark:border-zinc-800 pt-4">
                                         <div>
                                             <label className="text-[13px] font-black text-halliburton-red uppercase tracking-widest mb-2 block">Margen Seguridad (PSI)</label>
                                             <input type="number" value={slug.safetyPressure} onChange={e => setSlug({ ...slug, safetyPressure: e.target.value })} className="w-full input-style text-xl font-bold" placeholder="200" />
@@ -1029,7 +1029,7 @@
                             {activeSubTab === 'owr' && (
                                 <div className="space-y-6">
                                     <h4 className="text-[14px] font-black text-halliburton-red uppercase tracking-widest mb-4 italic">Análisis de Retorta (OWR)</h4>
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className="text-[13px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 block">% Vol Aceite</label>
                                             <input type="number" value={owr.vOil} onChange={e => setOwr({ ...owr, vOil: e.target.value })} className="w-full input-style text-xl font-bold" />
@@ -1109,7 +1109,7 @@
                                     </div>
                                     <div className="space-y-4">
                                         {mix.map((f, i) => (
-                                            <div key={i} className="grid grid-cols-2 gap-4 p-5 bg-zinc-50 dark:bg-slate-900/60 rounded-[2rem] border-2 border-zinc-100 dark:border-zinc-800 shadow-sm relative group/fluid">
+                                            <div key={i} className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-5 bg-zinc-50 dark:bg-slate-900/60 rounded-[2rem] border-2 border-zinc-100 dark:border-zinc-800 shadow-sm relative group/fluid">
                                                 <div>
                                                     <label className="text-[13px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 block">Vol {i + 1} ({mixUnits.vol})</label>
                                                     <input type="number" value={f.vol} onChange={e => {
@@ -2008,6 +2008,9 @@
                         style={{ cursor: (draggingPitId || resizingPitId) ? (resizingPitId ? 'se-resize' : 'grabbing') : 'default' }}
                     >
                         <div className="absolute inset-0 opacity-[0.08] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#52525b 1.5px, transparent 1.5px)', backgroundSize: '40px 40px' }}></div>
+                        <div className="lg:hidden absolute top-4 left-1/2 -translate-x-1/2 bg-zinc-900/80 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest z-10">
+                            Desliza para moverte por el plano
+                        </div>
 
                         {/* Selection Box Overlay */}
                         {selectionBox && (
@@ -2254,6 +2257,7 @@
             const [showAddModal, setShowAddModal] = useState(false);
             const [newProduct, setNewProduct] = useState({ name: '', factor: '1', order: '' });
             const [sortConfig, setSortConfig] = useState({ key: 'custom', direction: 'asc' });
+            const [isMobileOpen, setIsMobileOpen] = useState(false);
 
             useEffect(() => {
                 localStorage.setItem('baroid_products_inventory_v2', JSON.stringify(products));
@@ -2451,9 +2455,9 @@
                         </div>
                     )}
 
-                    <div id="inventory-report-container" className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 shadow-2xl border border-zinc-100 dark:border-zinc-800">
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-separate border-spacing-y-1 min-w-[1000px]">
+                    <div id="inventory-report-container" className="bg-white dark:bg-slate-900 rounded-[1.5rem] md:rounded-[2.5rem] p-4 md:p-6 shadow-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden">
+                        <div className="overflow-x-auto custom-scrollbar -mx-4 px-4">
+                            <table className="w-full text-left border-separate border-spacing-y-1 min-w-[800px]">
                                 <thead>
                                     <tr className="text-[9px] font-black uppercase text-zinc-400 tracking-widest px-4">
                                         <th
@@ -2758,98 +2762,122 @@
 
 
 
-        const Sidebar = ({ sectors, setActiveSector, activeSector, searchQuery, setSearchQuery, isEditing, setIsEditing, darkMode, setDarkMode, resetToDefaults, exportData, importData, fileInputRef, searchInputRef, notes, setNotes, favorites, deleteItem, setShowModal, setModalData, cardSize, setCardSize }) => (
-            <aside className="w-80 sidebar-bg h-screen flex flex-col sticky top-0 z-50 overflow-hidden shrink-0">
-                <div className="p-10 flex items-center gap-4">
-                    <div className="w-12 h-12 bg-halliburton-red rounded-2xl flex items-center justify-center shadow-lg shadow-red-900/30">
-                        <Icon name="activity" size={24} className="text-white" />
-                    </div>
-                    <div className="overflow-hidden">
-                        <h1 className="text-xl font-black tracking-tighter text-halliburton-dark dark:text-white uppercase italic truncate">Baroid Hub</h1>
-                        <span className="text-[9px] font-bold text-halliburton-red uppercase tracking-[0.3em] truncate block">Field Operations</span>
-                    </div>
-                </div>
-
-                <div className="px-6 mb-8 group">
-                    <div className="relative">
-                        <input
-                            ref={searchInputRef}
-                            type="text"
-                            placeholder="Buscar herramienta... (/)"
-                            className="w-full bg-zinc-50 dark:bg-slate-900 border-2 border-zinc-100 dark:border-zinc-800 rounded-2xl py-4 pl-12 pr-4 text-xs font-black uppercase tracking-widest placeholder-zinc-400 focus:border-halliburton-red outline-none transition-all shadow-sm group-hover:shadow-md"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-                        <Icon name="search" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-halliburton-red transition-colors" />
-                    </div>
-                </div>
-
-                <div className="flex-1 overflow-y-auto custom-scrollbar px-4 space-y-1 pb-10">
-                    <button onClick={() => { setActiveSector('favorites'); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === 'favorites' && !searchQuery ? 'sidebar-item-active shadow-lg' : 'text-zinc-600 dark:text-zinc-400'}`}>
-                        <Icon name="heart" size={18} />
-                        <span className="truncate">Mis Favoritos</span>
-                        {favorites.length > 0 && <span className="ml-auto bg-zinc-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded-full font-black">{favorites.length}</span>}
-                    </button>
-
-                    <div className="my-6 px-4">
-                        <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em]">Cálculos & Operaciones</span>
-                    </div>
-
-                    <button onClick={() => { setActiveSector('calculator'); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === 'calculator' && !searchQuery ? 'sidebar-item-active shadow-lg' : 'text-zinc-600 dark:text-zinc-400'}`}>
-                        <Icon name="calculator" size={18} />
-                        <span className="truncate">Calculadora Fluidos</span>
-                    </button>
-
-                    <button onClick={() => { setActiveSector('inventory'); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === 'inventory' && !searchQuery ? 'sidebar-item-active shadow-lg' : 'text-zinc-600 dark:text-zinc-400'}`}>
-                        <Icon name="clipboard-check" size={18} />
-                        <span className="truncate">Conciliación Inventario</span>
-                    </button>
-
-                    <button onClick={() => { setActiveSector('piletas'); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === 'piletas' && !searchQuery ? 'sidebar-item-active shadow-lg' : 'text-zinc-600 dark:text-zinc-400'}`}>
-                        <Icon name="layout" size={18} />
-                        <span className="truncate">Sistema de Piletas</span>
-                    </button>
-                    <div className="h-[1px] bg-zinc-100 dark:bg-zinc-800 my-4 mx-4"></div>
-                    <p className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.2em] ml-4 mb-2">SECTORES</p>
-                    {sectors.map(sec => (
-                        <div key={sec.id} className="group relative">
-                            <button onClick={() => { setActiveSector(sec.id); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === sec.id && !searchQuery ? 'sidebar-item-active' : 'text-zinc-600 dark:text-zinc-400'}`}>
-                                <Icon name={sec.icon} size={18} style={{ color: (activeSector === sec.id && !searchQuery) ? '#CC0000' : '#8E979D' }} />
-                                <span className="truncate">{sec.name}</span>
-                            </button>
-                            {isEditing && (
-                                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1 opacity-0 group-hover:opacity-100 scale-90">
-                                    <button onClick={() => { setModalData({ type: 'sector', id: sec.id, name: sec.name, icon: sec.icon }); setShowModal('edit-item'); }} className="p-2 text-zinc-400 hover:text-halliburton-red transition-colors"><Icon name="edit-2" size={14} /></button>
-                                    <button onClick={() => deleteItem('sector', sec.id)} className="p-2 text-zinc-400 hover:text-halliburton-red transition-colors"><Icon name="trash-2" size={14} /></button>
-                                </div>
-                            )}
+        const Sidebar = ({ sectors, setActiveSector, activeSector, searchQuery, setSearchQuery, isEditing, setIsEditing, darkMode, setDarkMode, resetToDefaults, exportData, importData, fileInputRef, searchInputRef, notes, setNotes, favorites, deleteItem, setShowModal, setModalData, cardSize, setCardSize, isMobileOpen, setIsMobileOpen }) => (
+            <>
+                {/* Mobile Overlay */}
+                {isMobileOpen && (
+                    <div
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] lg:hidden animate-fade-in"
+                        onClick={() => setIsMobileOpen(false)}
+                    />
+                )}
+                <aside className={`fixed lg:sticky top-0 left-0 w-80 sidebar-bg h-screen flex flex-col z-[70] overflow-hidden shrink-0 transition-transform duration-500 ease-out transform ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} shadow-2xl lg:shadow-none`}>
+                    <div className="p-10 flex items-center gap-4">
+                        <div className="w-12 h-12 bg-halliburton-red rounded-2xl flex items-center justify-center shadow-lg shadow-red-900/30">
+                            <Icon name="activity" size={24} className="text-white" />
                         </div>
-                    ))}
-                </div>
-                <div className="p-6 border-t border-zinc-100 dark:border-zinc-800 space-y-3 bg-white dark:bg-transparent">
-                    <button onClick={() => setIsEditing(!isEditing)} className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${isEditing ? 'bg-halliburton-red text-white' : 'bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-slate-700'}`}>
-                        <Icon name={isEditing ? "check" : "settings"} size={14} /> {isEditing ? "Finalizar" : "Gestionar App"}
-                    </button>
-                    {isEditing && (
-                        <>
-                            <button onClick={exportData} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest bg-zinc-50 dark:bg-slate-800/50 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-slate-700 border border-zinc-200 dark:border-zinc-800">
-                                <Icon name="download" size={12} /> Descargar Back Up
-                            </button>
-                            <button onClick={() => fileInputRef.current?.click()} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest bg-zinc-50 dark:bg-slate-800/50 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-slate-700 border border-zinc-200 dark:border-zinc-800">
-                                <Icon name="upload" size={12} /> Importar Back Up
-                            </button>
-                            <input type="file" ref={fileInputRef} onChange={importData} accept=".json" className="hidden" />
-                            <button onClick={resetToDefaults} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest bg-zinc-50 dark:bg-slate-800/50 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 border border-red-100 dark:border-red-900/30">
-                                <Icon name="rotate-ccw" size={12} /> Restablecer Original
-                            </button>
-                        </>
-                    )}
-                </div>
-            </aside>
+                        <div className="overflow-hidden">
+                            <h1 className="text-xl font-black tracking-tighter text-halliburton-dark dark:text-white uppercase italic truncate">Baroid Hub</h1>
+                            <span className="text-[9px] font-bold text-halliburton-red uppercase tracking-[0.3em] truncate block">Field Operations</span>
+                        </div>
+                    </div>
+
+                    <div className="px-6 mb-8 group">
+                        <div className="relative">
+                            <input
+                                ref={searchInputRef}
+                                type="text"
+                                placeholder="Buscar herramienta... (/)"
+                                className="w-full bg-zinc-50 dark:bg-slate-900 border-2 border-zinc-100 dark:border-zinc-800 rounded-2xl py-4 pl-12 pr-4 text-xs font-black uppercase tracking-widest placeholder-zinc-400 focus:border-halliburton-red outline-none transition-all shadow-sm group-hover:shadow-md"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                            <Icon name="search" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-halliburton-red transition-colors" />
+                        </div>
+                    </div>
+
+                    <div className="flex-1 overflow-y-auto custom-scrollbar px-4 space-y-1 pb-10">
+                        <button onClick={() => { setActiveSector('favorites'); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === 'favorites' && !searchQuery ? 'sidebar-item-active shadow-lg' : 'text-zinc-600 dark:text-zinc-400'}`}>
+                            <Icon name="heart" size={18} />
+                            <span className="truncate">Mis Favoritos</span>
+                            {favorites.length > 0 && <span className="ml-auto bg-zinc-100 dark:bg-slate-800 text-[10px] px-2 py-0.5 rounded-full font-black">{favorites.length}</span>}
+                        </button>
+
+                        <div className="my-6 px-4">
+                            <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em]">Cálculos & Operaciones</span>
+                        </div>
+
+                        <button onClick={() => { setActiveSector('calculator'); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === 'calculator' && !searchQuery ? 'sidebar-item-active shadow-lg' : 'text-zinc-600 dark:text-zinc-400'}`}>
+                            <Icon name="calculator" size={18} />
+                            <span className="truncate">Calculadora Fluidos</span>
+                        </button>
+
+                        <button onClick={() => { setActiveSector('inventory'); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === 'inventory' && !searchQuery ? 'sidebar-item-active shadow-lg' : 'text-zinc-600 dark:text-zinc-400'}`}>
+                            <Icon name="clipboard-check" size={18} />
+                            <span className="truncate">Conciliación Inventario</span>
+                        </button>
+
+                        <button onClick={() => { setActiveSector('piletas'); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === 'piletas' && !searchQuery ? 'sidebar-item-active shadow-lg' : 'text-zinc-600 dark:text-zinc-400'}`}>
+                            <Icon name="layout" size={18} />
+                            <span className="truncate">Sistema de Piletas</span>
+                        </button>
+                        <div className="h-[1px] bg-zinc-100 dark:bg-zinc-800 my-4 mx-4"></div>
+                        <p className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.2em] ml-4 mb-2">SECTORES</p>
+                        {sectors.map(sec => (
+                            <div key={sec.id} className="group relative">
+                                <button onClick={() => { setActiveSector(sec.id); setSearchQuery(''); }} className={`w-full flex items-center gap-4 px-4 py-4 rounded-xl text-sm font-semibold transition-all hover:bg-zinc-50 dark:hover:bg-slate-800/50 ${activeSector === sec.id && !searchQuery ? 'sidebar-item-active' : 'text-zinc-600 dark:text-zinc-400'}`}>
+                                    <Icon name={sec.icon} size={18} style={{ color: (activeSector === sec.id && !searchQuery) ? '#CC0000' : '#8E979D' }} />
+                                    <span className="truncate">{sec.name}</span>
+                                </button>
+                                {isEditing && (
+                                    <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1 opacity-0 group-hover:opacity-100 scale-90">
+                                        <button onClick={() => { setModalData({ type: 'sector', id: sec.id, name: sec.name, icon: sec.icon }); setShowModal('edit-item'); }} className="p-2 text-zinc-400 hover:text-halliburton-red transition-colors"><Icon name="edit-2" size={14} /></button>
+                                        <button onClick={() => deleteItem('sector', sec.id)} className="p-2 text-zinc-400 hover:text-halliburton-red transition-colors"><Icon name="trash-2" size={14} /></button>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    <div className="p-6 border-t border-zinc-100 dark:border-zinc-800 space-y-3 bg-white dark:bg-transparent">
+                        <button onClick={() => setIsEditing(!isEditing)} className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${isEditing ? 'bg-halliburton-red text-white' : 'bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-slate-700'}`}>
+                            <Icon name={isEditing ? "check" : "settings"} size={14} /> {isEditing ? "Finalizar" : "Gestionar App"}
+                        </button>
+                        {isEditing && (
+                            <>
+                                <button onClick={exportData} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest bg-zinc-50 dark:bg-slate-800/50 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-slate-700 border border-zinc-200 dark:border-zinc-800">
+                                    <Icon name="download" size={12} /> Descargar Back Up
+                                </button>
+                                <button onClick={() => fileInputRef.current?.click()} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest bg-zinc-50 dark:bg-slate-800/50 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-slate-700 border border-zinc-200 dark:border-zinc-800">
+                                    <Icon name="upload" size={12} /> Importar Back Up
+                                </button>
+                                <input type="file" ref={fileInputRef} onChange={importData} accept=".json" className="hidden" />
+                                <button onClick={resetToDefaults} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest bg-zinc-50 dark:bg-slate-800/50 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 border border-red-100 dark:border-red-900/30">
+                                    <Icon name="rotate-ccw" size={12} /> Restablecer Original
+                                </button>
+                            </>
+                        )}
+                    </div>
+                </aside>
+            </>
         );
 
-        const MainContent = ({ displaySectors, activeSector, searchQuery, sectors, isEditing, setShowModal, setModalData, deleteItem, trackLinkClick, toggleFavorite, cardSize, setCardSize, darkMode, setDarkMode }) => (
-            <main className="flex-1 min-h-screen p-12 overflow-x-hidden relative">
+        const MainContent = ({ displaySectors, activeSector, searchQuery, sectors, isEditing, setShowModal, setModalData, deleteItem, trackLinkClick, toggleFavorite, cardSize, setCardSize, darkMode, setDarkMode, setIsMobileOpen }) => (
+            <main className="flex-1 min-h-screen bg-[var(--h-bg)] px-4 md:px-12 py-8 overflow-x-hidden w-full transition-all duration-300">
+                {/* Mobile Header Toolbar */}
+                <div className="flex lg:hidden items-center justify-between mb-8 bg-white dark:bg-slate-900 p-4 rounded-3xl shadow-lg border border-zinc-100 dark:border-zinc-800">
+                    <button
+                        onClick={() => setIsMobileOpen(true)}
+                        className="p-3 bg-zinc-100 dark:bg-slate-800 rounded-2xl text-zinc-600 dark:text-zinc-400"
+                    >
+                        <Icon name="menu" size={24} />
+                    </button>
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-halliburton-red rounded-xl flex items-center justify-center">
+                            <Icon name="activity" size={20} className="text-white" />
+                        </div>
+                        <span className="font-black italic uppercase tracking-tighter text-lg dark:text-white">Baroid Hub</span>
+                    </div>
+                </div>
                 {/* Top Controls Overlay */}
                 <div className="absolute top-8 right-12 z-40 flex items-center gap-4">
                     <div className="flex bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-1.5 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-xl">
@@ -3770,7 +3798,7 @@
                     <div className="flex w-full max-w-[1600px] relative shadow-2xl">
                         <Sidebar
                             sectors={sectors}
-                            setActiveSector={setActiveSector}
+                            setActiveSector={(s) => { setActiveSector(s); setIsMobileOpen(false); }}
                             activeSector={activeSector}
                             searchQuery={searchQuery}
                             setSearchQuery={setSearchQuery}
@@ -3791,6 +3819,8 @@
                             setModalData={setModalData}
                             cardSize={cardSize}
                             setCardSize={setCardSize}
+                            isMobileOpen={isMobileOpen}
+                            setIsMobileOpen={setIsMobileOpen}
                         />
                         <MainContent
                             displaySectors={displaySectors}
@@ -3807,6 +3837,7 @@
                             setCardSize={setCardSize}
                             darkMode={darkMode}
                             setDarkMode={setDarkMode}
+                            setIsMobileOpen={setIsMobileOpen}
                         />
                         <Modal
                             showModal={showModal}
