@@ -2188,51 +2188,56 @@
 
         const InventoryConciliation = ({ isEditing }) => {
             const [products, setProducts] = useState(() => {
-                const saved = localStorage.getItem('baroid_products_inventory_v2');
-                return saved ? JSON.parse(saved) : [
-                    { id: '1', name: 'LIME FG – Cal', factor: 20, order: 1 },
-                    { id: '2', name: 'BARABLOK™ 400 NA', factor: 25, order: 2 },
-                    { id: '3', name: 'BARACARB®-DF FINE', factor: 25, order: 3 },
-                    { id: '4', name: 'BARACARB®-DF MEDIUM', factor: 25, order: 4 },
-                    { id: '5', name: 'BARACARB®-DF COARSE', factor: 25, order: 5 },
-                    { id: '6', name: 'GELTONE® II', factor: 22.7, order: 6 },
-                    { id: '7', name: 'BDF™-965 FINE', factor: 25, order: 7 },
-                    { id: '8', name: 'BDF™-965 MEDIUM', factor: 25, order: 8 },
-                    { id: '9', name: 'BaraShield®-982', factor: 22.7, order: 9 },
-                    { id: '10', name: 'BaraShield®-981', factor: 22.7, order: 10 },
-                    { id: '11', name: 'BaraFLC®-903', factor: 22.7, order: 11 },
-                    { id: '12', name: 'BaraSeal™-957', factor: 22.7, order: 12 },
-                    { id: '13', name: 'STOPPIT™', factor: 22.7, order: 13 },
-                    { id: '14', name: 'OBTURANTE MEZCLA', factor: 25, order: 14 },
-                    { id: '15', name: 'EZ MUL® LA', factor: 1, order: 15 },
-                    { id: '16', name: 'CLAY GRABBER®', factor: 18.9, order: 16 },
-                    { id: '17', name: 'CLAY SYNC™ II', factor: 22.7, order: 17 },
-                    { id: '18', name: 'BARA-DEFOAM® HP', factor: 18.9, order: 18 },
-                    { id: '19', name: 'OMC® 3', factor: 25, order: 19 },
-                    { id: '20', name: 'THERMA-THIN YPF', factor: 18.9, order: 20 },
-                    { id: '21', name: 'XLR-RATE™', factor: 1, order: 21 },
-                    { id: '22', name: 'DRILTREAT®', factor: 1, order: 22 },
-                    { id: '23', name: 'INVERMUL® LA', factor: 1, order: 23 },
-                    { id: '24', name: 'RM-63™', factor: 208, order: 24 },
-                    { id: '25', name: 'BAROFIBRE®', factor: 11.34, order: 25 },
-                    { id: '26', name: 'BARAZAN® D PLUS', factor: 25, order: 26 },
-                    { id: '27', name: 'CARBONOX®', factor: 22.7, order: 27 },
-                    { id: '28', name: 'PAC™-L', factor: 22.7, order: 28 },
-                    { id: '29', name: 'BENTONITA BOLSÓN', factor: 700, order: 29 },
-                    { id: '30', name: 'BENTONITA PALLET', factor: 20, order: 30 },
-                    { id: '31', name: 'SODA ASH', factor: 25, order: 31 },
-                    { id: '32', name: 'SODA CÁUSTICA', factor: 25, order: 32 },
-                    { id: '33', name: 'Potassium chloride (KCl)', factor: 25, order: 33 },
-                    { id: '34', name: 'BARAVIS W-637', factor: 10, order: 34 },
-                    { id: '35', name: 'TS PLUS YPF', factor: 11.34, order: 35 },
-                    { id: '36', name: 'CALCIUM CHLORIDE BRINE (YPF)', factor: 1, order: 36 },
-                    { id: '37', name: 'BARITA EN BOLSONES', factor: 1.5, order: 37 },
-                    { id: '38', name: 'Cloruro de Calcio', factor: 25, order: 38 },
-                    { id: '39', name: 'BARITA EN SILO', factor: 1, order: 39 },
-                    { id: '40', name: 'INVERMUL®', factor: 208, order: 40 },
-                    { id: '41', name: 'LE SUPERMUL™', factor: 1, order: 41 },
-                    { id: '42', name: 'TAU-MOD®', factor: 22.7, order: 42 }
-                ];
+                try {
+                    const saved = localStorage.getItem('baroid_products_inventory_v2');
+                    return saved ? JSON.parse(saved) : [
+                        { id: '1', name: 'LIME FG – Cal', factor: 20, order: 1 },
+                        { id: '2', name: 'BARABLOK™ 400 NA', factor: 25, order: 2 },
+                        { id: '3', name: 'BARACARB®-DF FINE', factor: 25, order: 3 },
+                        { id: '4', name: 'BARACARB®-DF MEDIUM', factor: 25, order: 4 },
+                        { id: '5', name: 'BARACARB®-DF COARSE', factor: 25, order: 5 },
+                        { id: '6', name: 'GELTONE® II', factor: 22.7, order: 6 },
+                        { id: '7', name: 'BDF™-965 FINE', factor: 25, order: 7 },
+                        { id: '8', name: 'BDF™-965 MEDIUM', factor: 25, order: 8 },
+                        { id: '9', name: 'BaraShield®-982', factor: 22.7, order: 9 },
+                        { id: '10', name: 'BaraShield®-981', factor: 22.7, order: 10 },
+                        { id: '11', name: 'BaraFLC®-903', factor: 22.7, order: 11 },
+                        { id: '12', name: 'BaraSeal™-957', factor: 22.7, order: 12 },
+                        { id: '13', name: 'STOPPIT™', factor: 22.7, order: 13 },
+                        { id: '14', name: 'OBTURANTE MEZCLA', factor: 25, order: 14 },
+                        { id: '15', name: 'EZ MUL® LA', factor: 1, order: 15 },
+                        { id: '16', name: 'CLAY GRABBER®', factor: 18.9, order: 16 },
+                        { id: '17', name: 'CLAY SYNC™ II', factor: 22.7, order: 17 },
+                        { id: '18', name: 'BARA-DEFOAM® HP', factor: 18.9, order: 18 },
+                        { id: '19', name: 'OMC® 3', factor: 25, order: 19 },
+                        { id: '20', name: 'THERMA-THIN YPF', factor: 18.9, order: 20 },
+                        { id: '21', name: 'XLR-RATE™', factor: 1, order: 21 },
+                        { id: '22', name: 'DRILTREAT®', factor: 1, order: 22 },
+                        { id: '23', name: 'INVERMUL® LA', factor: 1, order: 23 },
+                        { id: '24', name: 'RM-63™', factor: 208, order: 24 },
+                        { id: '25', name: 'BAROFIBRE®', factor: 11.34, order: 25 },
+                        { id: '26', name: 'BARAZAN® D PLUS', factor: 25, order: 26 },
+                        { id: '27', name: 'CARBONOX®', factor: 22.7, order: 27 },
+                        { id: '28', name: 'PAC™-L', factor: 22.7, order: 28 },
+                        { id: '29', name: 'BENTONITA BOLSÓN', factor: 700, order: 29 },
+                        { id: '30', name: 'BENTONITA PALLET', factor: 20, order: 30 },
+                        { id: '31', name: 'SODA ASH', factor: 25, order: 31 },
+                        { id: '32', name: 'SODA CÁUSTICA', factor: 25, order: 32 },
+                        { id: '33', name: 'Potassium chloride (KCl)', factor: 25, order: 33 },
+                        { id: '34', name: 'BARAVIS W-637', factor: 10, order: 34 },
+                        { id: '35', name: 'TS PLUS YPF', factor: 11.34, order: 35 },
+                        { id: '36', name: 'CALCIUM CHLORIDE BRINE (YPF)', factor: 1, order: 36 },
+                        { id: '37', name: 'BARITA EN BOLSONES', factor: 1.5, order: 37 },
+                        { id: '38', name: 'Cloruro de Calcio', factor: 25, order: 38 },
+                        { id: '39', name: 'BARITA EN SILO', factor: 1, order: 39 },
+                        { id: '40', name: 'INVERMUL®', factor: 208, order: 40 },
+                        { id: '41', name: 'LE SUPERMUL™', factor: 1, order: 41 },
+                        { id: '42', name: 'TAU-MOD®', factor: 22.7, order: 42 }
+                    ];
+                } catch (e) {
+                    console.error("Error loading inventory products:", e);
+                    return [];
+                }
             });
 
             const getInitialEntries = () => Array.from({ length: 12 }, (_, i) => ({
@@ -2244,10 +2249,14 @@
             }));
 
             const [entries, setEntries] = useState(() => {
-                const saved = localStorage.getItem('baroid_inventory_entries_v1');
-                if (saved) {
-                    const parsed = JSON.parse(saved);
-                    return parsed.length > 0 ? parsed : getInitialEntries();
+                try {
+                    const saved = localStorage.getItem('baroid_inventory_entries_v1');
+                    if (saved) {
+                        const parsed = JSON.parse(saved);
+                        return parsed.length > 0 ? parsed : getInitialEntries();
+                    }
+                } catch (e) {
+                    console.error("Error loading inventory entries:", e);
                 }
                 return getInitialEntries();
             });
@@ -2257,7 +2266,6 @@
             const [showAddModal, setShowAddModal] = useState(false);
             const [newProduct, setNewProduct] = useState({ name: '', factor: '1', order: '' });
             const [sortConfig, setSortConfig] = useState({ key: 'custom', direction: 'asc' });
-            const [isMobileOpen, setIsMobileOpen] = useState(false);
 
             useEffect(() => {
                 localStorage.setItem('baroid_products_inventory_v2', JSON.stringify(products));
@@ -2879,7 +2887,7 @@
                     </div>
                 </div>
                 {/* Top Controls Overlay */}
-                <div className="absolute top-8 right-12 z-40 flex items-center gap-4">
+                <div className="hidden lg:flex absolute top-8 right-12 z-40 items-center gap-4">
                     <div className="flex bg-white/80 dark:bg-slate-900/80 backdrop-blur-md p-1.5 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-xl">
                         <button
                             onClick={() => setCardSize('large')}
@@ -3568,8 +3576,13 @@
 
         const App = () => {
             const [sectors, setSectors] = useState(() => {
-                const saved = localStorage.getItem('baroid_hub_data_v5');
-                return saved ? JSON.parse(saved) : INITIAL_DATA_REFINED;
+                try {
+                    const saved = localStorage.getItem('baroid_hub_data_v5');
+                    return saved ? JSON.parse(saved) : INITIAL_DATA_REFINED;
+                } catch (e) {
+                    console.error("Error loading app data:", e);
+                    return INITIAL_DATA_REFINED;
+                }
             });
             const [activeSector, setActiveSector] = useState(sectors[0]?.id || 'sec_hr');
             const [searchQuery, setSearchQuery] = useState('');
@@ -3577,6 +3590,7 @@
             const [showModal, setShowModal] = useState(null);
             const [modalData, setModalData] = useState({});
             const [showNotes, setShowNotes] = useState(false);
+            const [isMobileOpen, setIsMobileOpen] = useState(false);
             const [cardSize, setCardSize] = useState(() => localStorage.getItem('baroid_card_size') || 'large');
             const [darkMode, setDarkMode] = useState(() => localStorage.getItem('baroid_dark_mode') === 'true');
             const [notes, setNotes] = useState(() => localStorage.getItem('baroid_notes') || '');
